@@ -182,7 +182,7 @@
 
 - (void)setupNavigationBar
 {
-    self.navigationItem.title = @"Общее";
+    self.navigationItem.title = @"Суммарная статистика";
 }
 
 - (void)setupScrollViewAndContentView

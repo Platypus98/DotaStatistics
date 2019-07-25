@@ -14,7 +14,7 @@
 
 - (DTSSectionModel *)createTotalSection
 {
-    return [[DTSSectionModel alloc] initWithName:@"Общее" image:[UIImage imageNamed:@"general_section"]];
+    return [[DTSSectionModel alloc] initWithName:@"Суммарная статистика" image:[UIImage imageNamed:@"general_section"]];
 }
 
 - (DTSSectionModel *)createLastMatchSection

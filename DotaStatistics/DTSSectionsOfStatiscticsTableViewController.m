@@ -87,7 +87,7 @@
         if (self.isInformationFind)
         {
             NSString *sectionName = [self.sections objectAtIndex:indexPath.row].name;
-            if ([sectionName isEqualToString:@"Общее"])
+            if ([sectionName isEqualToString:@"Суммарная статистика"])
             {
                 DTSTotalStatsViewController *totalStatsViewController = [DTSTotalStatsViewController new];
                 [self.parentViewController.navigationController pushViewController:totalStatsViewController animated:YES];
