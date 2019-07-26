@@ -148,14 +148,15 @@
 
 - (void)setupExampleLabel
 {
-    [self.exampleLabel setText:@"Пример: 103854982"];
+    [self.exampleLabel setText:@"Пример: 103854982 \nMiracle: 105248644 \nNo[o]ne: 106573901 \nRAMZEs: 132851371"];
+    self.exampleLabel.numberOfLines = 0;
     self.exampleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.exampleLabel.textColor = UIColor.whiteColor;
     [self.view addSubview:self.exampleLabel];
     [self.exampleLabel.topAnchor constraintEqualToAnchor:self.steamIdLabel.bottomAnchor constant:10].active = YES;
     [self.exampleLabel.leftAnchor constraintEqualToAnchor:self.steamIdLabel.leftAnchor].active = YES;
     [self.exampleLabel.widthAnchor constraintEqualToConstant:200].active = YES;
-    [self.exampleLabel.heightAnchor constraintEqualToConstant:40].active = YES;
+    [self.exampleLabel.heightAnchor constraintEqualToConstant:100].active = YES;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle

@@ -445,6 +445,7 @@
     [self.inAnalyzedMatchesTitleLabel.heightAnchor constraintEqualToConstant:30].active = YES;
     
     [self.countOfAnalyzedMatchesLabel setText:@"(-)"];
+    self.countOfAnalyzedMatchesLabel.adjustsFontSizeToFitWidth = YES;
     self.countOfAnalyzedMatchesLabel.textColor = UIColor.whiteColor;
     [self.countOfAnalyzedMatchesLabel setFont:[UIFont fontWithName:@"Helvetica" size:21]];
     self.countOfAnalyzedMatchesLabel.translatesAutoresizingMaskIntoConstraints = NO;
