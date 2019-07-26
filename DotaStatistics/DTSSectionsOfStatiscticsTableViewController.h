@@ -13,7 +13,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DTSSectionsOfStatiscticsTableViewController : UITableViewController
 
-@property (nonatomic, assign) BOOL isInternetConnectionAvailable; /**< Флаг доступности интеренет соединения */
 @property (nonatomic, assign) BOOL isInformationFind; /**< Флаг доступности информации по текущему Steam32 ID */
 
 @end

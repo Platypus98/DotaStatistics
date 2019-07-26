@@ -82,31 +82,26 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.isInternetConnectionAvailable)
+
+    if (self.isInformationFind)
     {
-        if (self.isInformationFind)
+        NSString *sectionName = [self.sections objectAtIndex:indexPath.row].name;
+        if ([sectionName isEqualToString:@"Суммарная статистика"])
         {
-            NSString *sectionName = [self.sections objectAtIndex:indexPath.row].name;
-            if ([sectionName isEqualToString:@"Суммарная статистика"])
-            {
-                DTSTotalStatsViewController *totalStatsViewController = [DTSTotalStatsViewController new];
-                [self.parentViewController.navigationController pushViewController:totalStatsViewController animated:YES];
-            }
-            else if ([sectionName isEqualToString:@"Последний матч"])
-            {
-                DTSLastMatchViewController *lastMatchViewController = [DTSLastMatchViewController new];
-                [self.parentViewController.navigationController pushViewController:lastMatchViewController animated:YES];
-            }
+            DTSTotalStatsViewController *totalStatsViewController = [DTSTotalStatsViewController new];
+            [self.parentViewController.navigationController pushViewController:totalStatsViewController animated:YES];
         }
-        else
+        else if ([sectionName isEqualToString:@"Последний матч"])
         {
-            [self infrormationIsntFind];
+            DTSLastMatchViewController *lastMatchViewController = [DTSLastMatchViewController new];
+            [self.parentViewController.navigationController pushViewController:lastMatchViewController animated:YES];
         }
     }
     else
     {
-        [self checkInternetConnection];
+        [self infrormationIsntFind];
     }
+    
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     });

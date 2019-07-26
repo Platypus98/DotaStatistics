@@ -30,6 +30,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)addPlayerMatchStats:(DTSPlayerMatchStats *)playerMatchStats;
 
 /**
+ Получение события о том, что интернет соединение не доступно
+ */
+- (void)checkInternetConnection;
+
+/**
  Получение события о том, что информация не найдена
  */
 - (void)infrormationIsntFind;

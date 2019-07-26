@@ -28,36 +28,50 @@
     session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     
     NSURLSessionDataTask *sessionDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        
+        if (data != nil)
+        {
+            NSArray *temp = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+            NSNumber *testKills =  [[temp objectAtIndex:0] valueForKey:@"sum"];
+            if (testKills.integerValue != 0)
+            {
+                DTSTotalStats *totalStats = [DTSTotalStats new];
+                totalStats.kills = [[temp objectAtIndex:0] valueForKey:@"sum"];
+                totalStats.deaths = [[temp objectAtIndex:1] valueForKey:@"sum"];
+                totalStats.assists = [[temp objectAtIndex:2] valueForKey:@"sum"];
+                totalStats.lastHits = [[temp objectAtIndex:6] valueForKey:@"sum"];
+                totalStats.denies = [[temp objectAtIndex:7] valueForKey:@"sum"];
+                totalStats.durationInSeconds = [[temp objectAtIndex:9] valueForKey:@"sum"];
+                totalStats.level = [[temp objectAtIndex:10] valueForKey:@"sum"];
+                totalStats.heroDamage = [[temp objectAtIndex:11] valueForKey:@"sum"];
+                totalStats.towerDamage = [[temp objectAtIndex:12] valueForKey:@"sum"];
+                totalStats.heroHealing = [[temp objectAtIndex:13] valueForKey:@"sum"];
                 
-        NSArray *temp = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-        
-        DTSTotalStats *totalStats = [DTSTotalStats new];
-        totalStats.kills = [[temp objectAtIndex:0] valueForKey:@"sum"];
-        totalStats.deaths = [[temp objectAtIndex:1] valueForKey:@"sum"];
-        totalStats.assists = [[temp objectAtIndex:2] valueForKey:@"sum"];
-        totalStats.lastHits = [[temp objectAtIndex:6] valueForKey:@"sum"];
-        totalStats.denies = [[temp objectAtIndex:7] valueForKey:@"sum"];
-        totalStats.durationInSeconds = [[temp objectAtIndex:9] valueForKey:@"sum"];
-        totalStats.level = [[temp objectAtIndex:10] valueForKey:@"sum"];
-        totalStats.heroDamage = [[temp objectAtIndex:11] valueForKey:@"sum"];
-        totalStats.towerDamage = [[temp objectAtIndex:12] valueForKey:@"sum"];
-        totalStats.heroHealing = [[temp objectAtIndex:13] valueForKey:@"sum"];
-        
-        totalStats.countOfAnalyzedMatchesLabel = [[temp objectAtIndex:15] valueForKey:@"n"];;
-        totalStats.stuns = [[temp objectAtIndex:14] valueForKey:@"sum"];
-        totalStats.towetKills = [[temp objectAtIndex:15] valueForKey:@"sum"];
-        totalStats.neutralKills = [[temp objectAtIndex:16] valueForKey:@"sum"];
-        totalStats.courierKills = [[temp objectAtIndex:17] valueForKey:@"sum"];
-        totalStats.purchaseTpscroll = [[temp objectAtIndex:18] valueForKey:@"sum"];
-        totalStats.purchaseWardObserver = [[temp objectAtIndex:19] valueForKey:@"sum"];
-        totalStats.purchaseWardSentry = [[temp objectAtIndex:20] valueForKey:@"sum"];
-        totalStats.purchaseGem = [[temp objectAtIndex:21] valueForKey:@"sum"];
-        totalStats.purchaseRapier = [[temp objectAtIndex:22] valueForKey:@"sum"];
-        totalStats.mapPings = [[temp objectAtIndex:23] valueForKey:@"sum"];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.DTSTotalStatsViewConstrollerDelegate setTotalStats:totalStats];
-        });
+                totalStats.countOfAnalyzedMatchesLabel = [[temp objectAtIndex:15] valueForKey:@"n"];;
+                totalStats.stuns = [[temp objectAtIndex:14] valueForKey:@"sum"];
+                totalStats.towetKills = [[temp objectAtIndex:15] valueForKey:@"sum"];
+                totalStats.neutralKills = [[temp objectAtIndex:16] valueForKey:@"sum"];
+                totalStats.courierKills = [[temp objectAtIndex:17] valueForKey:@"sum"];
+                totalStats.purchaseTpscroll = [[temp objectAtIndex:18] valueForKey:@"sum"];
+                totalStats.purchaseWardObserver = [[temp objectAtIndex:19] valueForKey:@"sum"];
+                totalStats.purchaseWardSentry = [[temp objectAtIndex:20] valueForKey:@"sum"];
+                totalStats.purchaseGem = [[temp objectAtIndex:21] valueForKey:@"sum"];
+                totalStats.purchaseRapier = [[temp objectAtIndex:22] valueForKey:@"sum"];
+                totalStats.mapPings = [[temp objectAtIndex:23] valueForKey:@"sum"];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.DTSTotalStatsViewConstrollerDelegate setTotalStats:totalStats];
+                });
+            }
+            else
+            {
+                [self.DTSTotalStatsViewConstrollerDelegate infrormationIsntFind];
+            }
+        }
+        else
+        {
+            [self.DTSTotalStatsViewConstrollerDelegate checkInternetConnection];
+        }
     }];
     [sessionDataTask resume];
 }

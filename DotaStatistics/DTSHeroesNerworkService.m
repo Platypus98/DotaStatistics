@@ -35,7 +35,7 @@
     
     NSURLSessionDataTask *sessionDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
-        @try
+        if (data != nil)
         {
             NSDictionary *temp = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
             [self.DTSAllHeroesViewControllerDelegate updateInformationWillBe];
@@ -92,13 +92,9 @@
             };
             [self.DTSAllHeroesViewControllerDelegate getInformationDidEnd];
         }
-        @catch (NSException *exception)
+        else
         {
             [self.DTSAllHeroesViewControllerDelegate checkInternetConnection];
-        }
-        @finally
-        {
-            
         }
     }];
     [sessionDataTask resume];

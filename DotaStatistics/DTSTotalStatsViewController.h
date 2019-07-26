@@ -21,6 +21,16 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)setTotalStats:(DTSTotalStats *)totalStats;
 
+/**
+ Получение события о том, что интернет соединение не доступно
+ */
+- (void)checkInternetConnection;
+
+/**
+ Получение события о том, что информация не найдена
+ */
+- (void)infrormationIsntFind;
+
 @end
 
 NS_ASSUME_NONNULL_END

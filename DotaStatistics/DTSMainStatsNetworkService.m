@@ -30,7 +30,7 @@
 
         dispatch_queue_t serialQueue = dispatch_queue_create("serial queue", nil);
         
-        @try
+        if (data != nil)
         {
             NSDictionary *temp = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
             NSDictionary *profileInfo = [temp valueForKey:@"profile"];
@@ -59,13 +59,9 @@
                 });
             }
         }
-        @catch (NSException *exception)
+        else
         {
             [self.DTSMainStatsViewConstrollerDelegate checkInternetConnection];
-        }
-        @finally
-        {
-        
         }
     }];
     [sessionDataTask resume];
@@ -86,7 +82,7 @@
     
     NSURLSessionDataTask *sessionDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
                 
-        @try
+        if (data != nil)
         {
             NSDictionary *temp = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
             
@@ -97,13 +93,9 @@
                 [self.DTSMainStatsViewConstrollerDelegate setWins:wins loses:loses];
             });
         }
-        @catch (NSException *exception)
+        else
         {
             [self.DTSMainStatsViewConstrollerDelegate checkInternetConnection];
-        }
-        @finally
-        {
-            
         }
     }];
     [sessionDataTask resume];

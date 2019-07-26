@@ -31,20 +31,26 @@
     
     NSURLSessionDataTask *sessionDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
-        NSArray *temp = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-        
-        @try
+        if (data != nil)
         {
-            NSNumber *matchId = [[temp objectAtIndex:0] valueForKey:@"match_id"];
-            [self getMatchStatsWithMatchId:matchId];
+            @try
+            {
+                NSArray *temp = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                NSNumber *matchId = [[temp objectAtIndex:0] valueForKey:@"match_id"];
+                [self getMatchStatsWithMatchId:matchId];
+            }
+            @catch (NSException *exception)
+            {
+                [self.DTSLastMatchViewConstrollerDelegate infrormationIsntFind];
+            }
+            @finally
+            {
+                
+            }
         }
-        @catch (NSException *exception)
+        else
         {
-            [self.DTSLastMatchViewConstrollerDelegate infrormationIsntFind];
-        }
-        @finally
-        {
-            
+            [self.DTSLastMatchViewConstrollerDelegate checkInternetConnection];
         }
     }];
     
@@ -68,7 +74,7 @@
     NSURLSessionDataTask *sessionDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
 
         NSDictionary *temp = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-        
+            
         DTSGeneralMatchStats *generalMatchStats = [DTSGeneralMatchStats new];
         generalMatchStats.matchId = matchId;
         NSNumber *radiantWin = [temp valueForKey:@"radiant_win"];
@@ -78,7 +84,7 @@
         }
         else
         {
-           generalMatchStats.radiantWin = YES;
+            generalMatchStats.radiantWin = YES;
         }
         generalMatchStats.durationInSeconds = [temp valueForKey:@"duration"];
         generalMatchStats.direScore = [temp valueForKey:@"dire_score"];
@@ -112,17 +118,16 @@
                 damageTaken = [[NSNumber alloc] initWithLong:(long)damageTaken.integerValue + damage.integerValue];
             }
             playerMatchStats.damageTaken = damageTaken;
-            
+                
             NSNumber *heroId = [element valueForKey:@"hero_id"];
             UIImage *heroImage = [[UIImage alloc] initWithData:[CoreDataStack getHeroImageByHeroId:heroId.integerValue]];
-
+                
             playerMatchStats.heroImage = heroImage;
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self.DTSLastMatchViewConstrollerDelegate addPlayerMatchStats:playerMatchStats];
+                    [self.DTSLastMatchViewConstrollerDelegate addPlayerMatchStats:playerMatchStats];
             });
         }
-        
     }];
     [sessionDataTask resume];
 }

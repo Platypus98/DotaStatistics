@@ -216,6 +216,17 @@
     });
 }
 
+- (void)checkInternetConnection
+{
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Интеренет соединение" message:@"Для получения даrнных необходимо наличие интеренет соединения.😎 Проверьте его и повторите попытку. \n \n P.S. Также, наше API может быть временно недоступно. Повторите попытку позднее" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
+    [alert addAction:defaultAction];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self presentViewController:alert animated:YES completion:nil];
+    });
+}
+
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

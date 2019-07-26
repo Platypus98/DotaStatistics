@@ -23,6 +23,8 @@
 @property (nonatomic, strong) UILabel *shareOfWinsLabel;
 
 @property (nonatomic, strong) DTSSectionsOfStatiscticsTableViewController *tableViewController;
+@property (nonatomic, assign) BOOL isInternetConnectionAvailable;
+@property (nonatomic, assign) BOOL isInformationFind;
 
 @end
 
@@ -43,6 +45,9 @@
         _totalWinsLabel = [UILabel new];
         _totalLosesLabel = [UILabel new];
         _shareOfWinsLabel = [UILabel new];
+        
+        _isInternetConnectionAvailable = NO;
+        _isInformationFind = NO;
     }
     return self;
 }
@@ -204,7 +209,8 @@
 
 - (void)updateAllInformation
 {
-    self.tableViewController.isInternetConnectionAvailable = YES;
+    self.isInternetConnectionAvailable = YES;
+    self.isInformationFind = YES;
     self.tableViewController.isInformationFind = YES;
     [self.networkService getGeneralUserInfromationWithSteam32Id:[[NSUserDefaults standardUserDefaults] stringForKey:@"Steam32Id"]];
     [self.networkService getWinAndLosesWithSteam32Id:[[NSUserDefaults standardUserDefaults] stringForKey:@"Steam32Id"]];
@@ -234,26 +240,33 @@
 
 - (void)infrormationIsntFind
 {
-    self.tableViewController.isInformationFind = NO;
-    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Упс ..." message:@"По данному Steam32 ID не найдено данных 😢. Измените его в разделе 'Настройки' и повторите попытку" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
-    [alert addAction:defaultAction];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self presentViewController:alert animated:YES completion:nil];
-    });
+    if (self.isInformationFind)
+    {
+        self.isInformationFind = NO;
+        self.tableViewController.isInformationFind = NO;
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Упс ..." message:@"По данному Steam32 ID не найдено данных 😢. Измените его в разделе 'Настройки' и повторите попытку" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
+        [alert addAction:defaultAction];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self presentViewController:alert animated:YES completion:nil];
+        });
+    }
 }
 
 - (void)checkInternetConnection
 {
-    self.tableViewController.isInternetConnectionAvailable = NO;
-    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Интеренет соединение" message:@"Для получения данных необходимо наличие интеренет соединения.😎 Проверьте его и повторите попытку. \n \n P.S. Также, наше API может быть временно недоступно. Повторите попытку позднее" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
-    [alert addAction:defaultAction];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self presentViewController:alert animated:YES completion:nil];
-    });
+    if (self.isInternetConnectionAvailable)
+    {
+        self.isInternetConnectionAvailable = NO;
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Интеренет соединение" message:@"Для получения данных необходимо наличие интеренет соединения.😎 Проверьте его и повторите попытку. \n \n P.S. Также, наше API может быть временно недоступно. Повторите попытку позднее" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
+        [alert addAction:defaultAction];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self presentViewController:alert animated:YES completion:nil];
+        });
+    }
 }
 
 - (void)setGeneralUserInformationWithPersonalName:(NSString *)personalName estimateMMR:(NSString *)estimateMMR

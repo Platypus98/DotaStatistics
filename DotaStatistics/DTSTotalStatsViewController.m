@@ -719,4 +719,26 @@
     [self.countOfAnalyzedMatchesLabel setText:[NSString stringWithFormat:@"(%@)", [formatter stringFromNumber:totalStats.countOfAnalyzedMatchesLabel]]];
 }
 
+- (void)checkInternetConnection
+{
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Интеренет соединение" message:@"Для получения данных необходимо наличие интеренет соединения.😎 Проверьте его и повторите попытку. \n \n P.S. Также, наше API может быть временно недоступно. Повторите попытку позднее" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
+    [alert addAction:defaultAction];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self presentViewController:alert animated:YES completion:nil];
+    });
+}
+
+- (void)infrormationIsntFind
+{
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Упс ..." message:@"По данному Steam32 ID не найдено данных 😢. Измените его в разделе 'Настройки' и повторите попытку" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
+    [alert addAction:defaultAction];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self presentViewController:alert animated:YES completion:nil];
+    });
+}
+
 @end
