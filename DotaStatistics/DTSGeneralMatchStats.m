@@ -16,7 +16,17 @@
     NSInteger minutes = matchDurationInSeconds.integerValue / 60;
     NSInteger seconds = matchDurationInSeconds.integerValue - (minutes * 60);
     
-    return [NSString stringWithFormat:@"%ld:%ld", minutes, seconds];
+    NSString *secondsString;
+    if (seconds < 10)
+    {
+        secondsString = [NSString stringWithFormat:@"0%ld", seconds];
+    }
+    else
+    {
+        secondsString = [NSString stringWithFormat:@"%ld", seconds];
+    }
+    
+    return [NSString stringWithFormat:@"%ld:%@", minutes, secondsString];
 }
 
 + (NSString *)convertStartTimeToString:(NSNumber *)startTime
