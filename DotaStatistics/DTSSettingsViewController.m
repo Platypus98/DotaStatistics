@@ -101,6 +101,7 @@
     self.infoSaveLabel.layer.cornerRadius = 10;
     self.infoSaveLabel.layer.masksToBounds = YES;
     [self.infoSaveLabel setFont:[UIFont fontWithName:@"Helvetica" size:15]];
+    self.infoSaveLabel.adjustsFontSizeToFitWidth = YES;
     [self.view addSubview:self.infoSaveLabel];
 }
 
