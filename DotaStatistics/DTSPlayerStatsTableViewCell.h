@@ -19,14 +19,15 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) UILabel *gPMLabel; /**< Количество золота в минуту */
 @property (nonatomic, readonly) UILabel *xPMLabel; /**< Количество опыта в минуту */
 
-@property (nonatomic, readonly) UILabel *lastHitsLabel; /**< Количество добитых крипов */
-@property (nonatomic, readonly) UILabel *deniesLabel; /**< Количество неотданных крипов */
-@property (nonatomic, readonly) UILabel *totalGoldLabel; /**< Общая ценность */
-@property (nonatomic, readonly) UILabel *heroDamageLabel; /**< Количество нанесенного урона героям */
-@property (nonatomic, readonly) UILabel *heroHealingLabel; /**< Количество восстановленного здоровья героям */
-@property (nonatomic, readonly) UILabel *towerDamageLabel; /**< Количесвто нанесенного урона по строениям */
-@property (nonatomic, readonly) UILabel *levelLabel; /**< Уровень */
-@property (nonatomic, readonly) UILabel *damageTakenLabel; /**< Количество полученного урона */
+@property (nonatomic, readonly) UILabel *lastHistNameLabel; /**< Количество добитых крипов */
+@property (nonatomic, readonly) UILabel *deniesNameLabel; /**< Количество неотданных крипов */
+@property (nonatomic, readonly) UILabel *totalGoldNameLabel; /**< Общая ценность */
+@property (nonatomic, readonly) UILabel *levelNameLabel; /**< Уровень */
+
+@property (nonatomic, readonly) UILabel *heroDamageNameLabel; /**< Количество нанесенного урона героям */
+@property (nonatomic, readonly) UILabel *heroHealingNameLabel; /**< Количество восстановленного здоровья героям */
+@property (nonatomic, readonly) UILabel *towerDamageNameLabel; /**< Количесвто нанесенного урона по строениям */
+@property (nonatomic, readonly) UILabel *damageTakenNameLabel; /**< Количество полученного урона */
 
 @end
 

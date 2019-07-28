@@ -29,6 +29,7 @@
         _label = [UILabel new];
         [_label setFont:[UIFont fontWithName:@"Helvetica" size:20]];
         _label.textColor = UIColor.whiteColor;
+        _label.adjustsFontSizeToFitWidth = YES;
         [self.contentView addSubview:_label];
         _label.translatesAutoresizingMaskIntoConstraints = NO;
         [_label.centerYAnchor constraintEqualToAnchor:self.contentView.centerYAnchor].active = YES;

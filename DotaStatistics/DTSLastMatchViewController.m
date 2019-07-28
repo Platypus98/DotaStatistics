@@ -266,14 +266,14 @@
         [cell.kdaLabel setText:[NSString stringWithFormat:@"%ld/%ld/%ld", playerMatchStats.kills.integerValue, playerMatchStats.deaths.integerValue, playerMatchStats.assists.integerValue]];
         [cell.gPMLabel setText:playerMatchStats.gPM.stringValue];
         [cell.xPMLabel setText:playerMatchStats.xPM.stringValue];
-        [cell.lastHitsLabel setText:playerMatchStats.lastHits.stringValue];
-        [cell.deniesLabel setText:playerMatchStats.denies.stringValue];
-        [cell.totalGoldLabel setText:playerMatchStats.totalGold.stringValue];
-        [cell.heroDamageLabel setText:playerMatchStats.heroDamage.stringValue];
-        [cell.heroHealingLabel setText:playerMatchStats.heroHealing.stringValue];
-        [cell.towerDamageLabel setText:playerMatchStats.towerDamage.stringValue];
-        [cell.levelLabel setText:playerMatchStats.level.stringValue];
-        [cell.damageTakenLabel setText:playerMatchStats.damageTaken.stringValue];
+        [cell.lastHistNameLabel setText:[NSString stringWithFormat:@"Добито крипов: %@", playerMatchStats.lastHits.stringValue]];
+        [cell.deniesNameLabel setText:[NSString stringWithFormat:@"Не отдано крипов: %@", playerMatchStats.denies.stringValue]];
+        [cell.totalGoldNameLabel setText:[NSString stringWithFormat:@"Золота всего: %@", playerMatchStats.totalGold.stringValue]];
+        [cell.heroDamageNameLabel setText:[NSString stringWithFormat:@"Нанесено урона: %@", playerMatchStats.heroDamage.stringValue]];
+        [cell.heroHealingNameLabel setText:[NSString stringWithFormat:@"Лечение героев: %@", playerMatchStats.heroHealing.stringValue]];
+        [cell.towerDamageNameLabel setText:[NSString stringWithFormat:@"Урон по башням: %@", playerMatchStats.towerDamage.stringValue]];
+        [cell.levelNameLabel setText:[NSString stringWithFormat:@"Уровень: %@", playerMatchStats.level.stringValue]];
+        [cell.damageTakenNameLabel setText:[NSString stringWithFormat:@"Урона получено: %@", playerMatchStats.damageTaken.stringValue]];
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
@@ -315,40 +315,62 @@
     [teamLabel setText:sectionTitle];
     [view addSubview:teamLabel];
     
-    UILabel *heroLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 32, 40, 15)];
+    NSInteger headerLabelsSize = self.tableView.frame.size.width/5;
+    
+    UILabel *heroLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 32, headerLabelsSize, 15)];
     [heroLabel setFont:[UIFont fontWithName:@"Helvetica" size:14]];
     heroLabel.textColor = UIColor.whiteColor;
     heroLabel.textAlignment = NSTextAlignmentCenter;
     [heroLabel setText:@"Герой"];
     [view addSubview:heroLabel];
     
-    UILabel *playerLabel = [[UILabel alloc] initWithFrame:CGRectMake(70, 32, 70, 15)];
+    UILabel *playerLabel = [UILabel new];
     [playerLabel setFont:[UIFont fontWithName:@"Helvetica" size:14]];
     playerLabel.textColor = UIColor.whiteColor;
     playerLabel.textAlignment = NSTextAlignmentCenter;
     [playerLabel setText:@"Игрок"];
+    playerLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [view addSubview:playerLabel];
+    [playerLabel.leftAnchor constraintEqualToAnchor:heroLabel.rightAnchor].active = YES;
+    [playerLabel.topAnchor constraintEqualToAnchor:heroLabel.topAnchor].active = YES;
+    [playerLabel.widthAnchor constraintEqualToAnchor:heroLabel.widthAnchor].active = YES;
+    [playerLabel.heightAnchor constraintEqualToAnchor:heroLabel.heightAnchor].active = YES;
     
-    UILabel *kdaLabel = [[UILabel alloc] initWithFrame:CGRectMake(155, 32, 70, 15)];
+    UILabel *kdaLabel = [UILabel new];
     [kdaLabel setFont:[UIFont fontWithName:@"Helvetica" size:14]];
     kdaLabel.textColor = UIColor.whiteColor;
     kdaLabel.textAlignment = NSTextAlignmentCenter;
     [kdaLabel setText:@"K/D/A"];
+    kdaLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [view addSubview:kdaLabel];
+    [kdaLabel.leftAnchor constraintEqualToAnchor:playerLabel.rightAnchor].active = YES;
+    [kdaLabel.topAnchor constraintEqualToAnchor:playerLabel.topAnchor].active = YES;
+    [kdaLabel.widthAnchor constraintEqualToAnchor:playerLabel.widthAnchor].active = YES;
+    [kdaLabel.heightAnchor constraintEqualToAnchor:playerLabel.heightAnchor].active = YES;
     
-    UILabel *gPMLabel = [[UILabel alloc] initWithFrame:CGRectMake(240, 32, 50, 15)];
+    UILabel *gPMLabel = [UILabel new];
     [gPMLabel setFont:[UIFont fontWithName:@"Helvetica" size:14]];
     gPMLabel.textColor = UIColor.whiteColor;
     gPMLabel.textAlignment = NSTextAlignmentCenter;
     [gPMLabel setText:@"GPM"];
+    gPMLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [view addSubview:gPMLabel];
+    [gPMLabel.leftAnchor constraintEqualToAnchor:kdaLabel.rightAnchor].active = YES;
+    [gPMLabel.topAnchor constraintEqualToAnchor:kdaLabel.topAnchor].active = YES;
+    [gPMLabel.widthAnchor constraintEqualToAnchor:kdaLabel.widthAnchor].active = YES;
+    [gPMLabel.heightAnchor constraintEqualToAnchor:kdaLabel.heightAnchor].active = YES;
     
-    UILabel *xPMLabel = [[UILabel alloc] initWithFrame:CGRectMake(305, 32, 50, 15)];
+    UILabel *xPMLabel = [UILabel new];
     [xPMLabel setFont:[UIFont fontWithName:@"Helvetica" size:14]];
     xPMLabel.textColor = UIColor.whiteColor;
     xPMLabel.textAlignment = NSTextAlignmentCenter;
     [xPMLabel setText:@"XPM"];
+    xPMLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [view addSubview:xPMLabel];
+    [xPMLabel.leftAnchor constraintEqualToAnchor:gPMLabel.rightAnchor].active = YES;
+    [xPMLabel.topAnchor constraintEqualToAnchor:gPMLabel.topAnchor].active = YES;
+    [xPMLabel.widthAnchor constraintEqualToAnchor:gPMLabel.widthAnchor].active = YES;
+    [xPMLabel.heightAnchor constraintEqualToAnchor:gPMLabel.heightAnchor].active = YES;
     
     return view;
 }

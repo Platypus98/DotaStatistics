@@ -217,6 +217,7 @@
     self.killsNameLabel.backgroundColor = [UIColor colorWithRed:36.0f/255.0f green:35.0f/255.0f blue:53.0f/255.0f alpha:1];
     self.killsNameLabel.textColor = [UIColor colorWithRed:191.0f/255.0f green:185.0f/255.0f blue:197.0f/255.0f alpha:1];
     self.killsNameLabel.textAlignment = NSTextAlignmentCenter;
+    self.killsNameLabel.adjustsFontSizeToFitWidth = YES;
     self.killsNameLabel.frame = CGRectMake(10, 40, self.view.frame.size.width/2 - 20, 40);
     [self.contentView addSubview:self.killsNameLabel];
     
@@ -225,6 +226,7 @@
     self.killsLabel.backgroundColor = [UIColor colorWithRed:42.0f/255.0f green:40.0f/255.0f blue:62.0f/255.0f alpha:1];
     self.killsLabel.textColor = UIColor.whiteColor;
     self.killsLabel.textAlignment = NSTextAlignmentCenter;
+    self.killsLabel.adjustsFontSizeToFitWidth = YES;
     [self.contentView addSubview:self.killsLabel];
     [self.killsLabel.topAnchor constraintEqualToAnchor:self.killsNameLabel.bottomAnchor].active = YES;
     [self.killsLabel.leftAnchor constraintEqualToAnchor:self.killsNameLabel.leftAnchor].active = YES;
@@ -235,6 +237,7 @@
     self.deathsNameLabel.backgroundColor = [UIColor colorWithRed:36.0f/255.0f green:35.0f/255.0f blue:53.0f/255.0f alpha:1];
     self.deathsNameLabel.textColor = [UIColor colorWithRed:191.0f/255.0f green:185.0f/255.0f blue:197.0f/255.0f alpha:1];
     self.deathsNameLabel.textAlignment = NSTextAlignmentCenter;
+    self.deathsNameLabel.adjustsFontSizeToFitWidth = YES;
     self.deathsNameLabel.frame = CGRectMake(self.view.frame.size.width/2 + 10, 40, self.view.frame.size.width/2 - 20, 40);
     [self.contentView addSubview:self.deathsNameLabel];
     
@@ -243,6 +246,7 @@
     self.deathsLabel.backgroundColor = [UIColor colorWithRed:42.0f/255.0f green:40.0f/255.0f blue:62.0f/255.0f alpha:1];
     self.deathsLabel.textColor = UIColor.whiteColor;
     self.deathsLabel.textAlignment = NSTextAlignmentCenter;
+    self.deathsLabel.adjustsFontSizeToFitWidth = YES;
     [self.contentView addSubview:self.deathsLabel];
     [self.deathsLabel.topAnchor constraintEqualToAnchor:self.deathsNameLabel.bottomAnchor].active = YES;
     [self.deathsLabel.leftAnchor constraintEqualToAnchor:self.deathsNameLabel.leftAnchor].active = YES;
@@ -254,6 +258,7 @@
     self.assistsNameLabel.textColor = [UIColor colorWithRed:191.0f/255.0f green:185.0f/255.0f blue:197.0f/255.0f alpha:1];
     self.assistsNameLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.assistsNameLabel.textAlignment = NSTextAlignmentCenter;
+    self.assistsNameLabel.adjustsFontSizeToFitWidth = YES;
     [self.contentView addSubview:self.assistsNameLabel];
     [self.assistsNameLabel.topAnchor constraintEqualToAnchor:self.killsLabel.bottomAnchor constant:15].active = YES;
     [self.assistsNameLabel.leftAnchor constraintEqualToAnchor:self.killsLabel.leftAnchor].active = YES;
@@ -265,6 +270,7 @@
     self.assistsLabel.backgroundColor = [UIColor colorWithRed:42.0f/255.0f green:40.0f/255.0f blue:62.0f/255.0f alpha:1];
     self.assistsLabel.textColor = UIColor.whiteColor;
     self.assistsLabel.textAlignment = NSTextAlignmentCenter;
+    self.assistsLabel.adjustsFontSizeToFitWidth = YES;
     [self.contentView addSubview:self.assistsLabel];
     [self.assistsLabel.topAnchor constraintEqualToAnchor:self.assistsNameLabel.bottomAnchor].active = YES;
     [self.assistsLabel.leftAnchor constraintEqualToAnchor:self.assistsNameLabel.leftAnchor].active = YES;
@@ -276,6 +282,7 @@
     self.lastHitsNameLabel.textColor = [UIColor colorWithRed:191.0f/255.0f green:185.0f/255.0f blue:197.0f/255.0f alpha:1];
     self.lastHitsNameLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.lastHitsNameLabel.textAlignment = NSTextAlignmentCenter;
+    self.lastHitsNameLabel.adjustsFontSizeToFitWidth = YES;
     [self.contentView addSubview:self.lastHitsNameLabel];
     [self.lastHitsNameLabel.topAnchor constraintEqualToAnchor:self.deathsLabel.bottomAnchor constant:15].active = YES;
     [self.lastHitsNameLabel.leftAnchor constraintEqualToAnchor:self.deathsLabel.leftAnchor].active = YES;
@@ -287,6 +294,7 @@
     self.lastHitsLabel.backgroundColor = [UIColor colorWithRed:42.0f/255.0f green:40.0f/255.0f blue:62.0f/255.0f alpha:1];
     self.lastHitsLabel.textColor = UIColor.whiteColor;
     self.lastHitsLabel.textAlignment = NSTextAlignmentCenter;
+    self.lastHitsLabel.adjustsFontSizeToFitWidth = YES;
     [self.contentView addSubview:self.lastHitsLabel];
     [self.lastHitsLabel.topAnchor constraintEqualToAnchor:self.lastHitsNameLabel.bottomAnchor].active = YES;
     [self.lastHitsLabel.leftAnchor constraintEqualToAnchor:self.lastHitsNameLabel.leftAnchor].active = YES;
@@ -299,6 +307,7 @@
     self.deniesNameLabel.adjustsFontSizeToFitWidth = YES;
     self.deniesNameLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.deniesNameLabel.textAlignment = NSTextAlignmentCenter;
+    self.deniesNameLabel.adjustsFontSizeToFitWidth = YES;
     [self.contentView addSubview:self.deniesNameLabel];
     [self.deniesNameLabel.topAnchor constraintEqualToAnchor:self.assistsLabel.bottomAnchor constant:15].active = YES;
     [self.deniesNameLabel.leftAnchor constraintEqualToAnchor:self.assistsLabel.leftAnchor].active = YES;
@@ -310,6 +319,7 @@
     self.deniesLabel.backgroundColor = [UIColor colorWithRed:42.0f/255.0f green:40.0f/255.0f blue:62.0f/255.0f alpha:1];
     self.deniesLabel.textColor = UIColor.whiteColor;
     self.deniesLabel.textAlignment = NSTextAlignmentCenter;
+    self.deniesLabel.adjustsFontSizeToFitWidth = YES;
     [self.contentView addSubview:self.deniesLabel];
     [self.deniesLabel.topAnchor constraintEqualToAnchor:self.deniesNameLabel.bottomAnchor].active = YES;
     [self.deniesLabel.leftAnchor constraintEqualToAnchor:self.deniesNameLabel.leftAnchor].active = YES;
@@ -322,6 +332,7 @@
     self.durationNameLabel.adjustsFontSizeToFitWidth = YES;
     self.durationNameLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.durationNameLabel.textAlignment = NSTextAlignmentCenter;
+    self.durationNameLabel.adjustsFontSizeToFitWidth = YES;
     [self.contentView addSubview:self.durationNameLabel];
     [self.durationNameLabel.topAnchor constraintEqualToAnchor:self.lastHitsLabel.bottomAnchor constant:15].active = YES;
     [self.durationNameLabel.leftAnchor constraintEqualToAnchor:self.lastHitsLabel.leftAnchor].active = YES;
@@ -333,6 +344,7 @@
     self.durationLabel.backgroundColor = [UIColor colorWithRed:42.0f/255.0f green:40.0f/255.0f blue:62.0f/255.0f alpha:1];
     self.durationLabel.textColor = UIColor.whiteColor;
     self.durationLabel.textAlignment = NSTextAlignmentCenter;
+    self.durationLabel.adjustsFontSizeToFitWidth = YES;
     [self.contentView addSubview:self.durationLabel];
     [self.durationLabel.topAnchor constraintEqualToAnchor:self.durationNameLabel.bottomAnchor].active = YES;
     [self.durationLabel.leftAnchor constraintEqualToAnchor:self.durationNameLabel.leftAnchor].active = YES;
@@ -345,6 +357,7 @@
     self.levelNameLabel.adjustsFontSizeToFitWidth = YES;
     self.levelNameLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.levelNameLabel.textAlignment = NSTextAlignmentCenter;
+    self.levelNameLabel.adjustsFontSizeToFitWidth = YES;
     [self.contentView addSubview:self.levelNameLabel];
     [self.levelNameLabel.topAnchor constraintEqualToAnchor:self.deniesLabel.bottomAnchor constant:15].active = YES;
     [self.levelNameLabel.leftAnchor constraintEqualToAnchor:self.deniesLabel.leftAnchor].active = YES;
@@ -356,6 +369,7 @@
     self.levelLabel.backgroundColor = [UIColor colorWithRed:42.0f/255.0f green:40.0f/255.0f blue:62.0f/255.0f alpha:1];
     self.levelLabel.textColor = UIColor.whiteColor;
     self.levelLabel.textAlignment = NSTextAlignmentCenter;
+    self.levelLabel.adjustsFontSizeToFitWidth = YES;
     [self.contentView addSubview:self.levelLabel];
     [self.levelLabel.topAnchor constraintEqualToAnchor:self.levelNameLabel.bottomAnchor].active = YES;
     [self.levelLabel.leftAnchor constraintEqualToAnchor:self.levelNameLabel.leftAnchor].active = YES;
@@ -368,6 +382,7 @@
     self.heroDamageNameLabel.adjustsFontSizeToFitWidth = YES;
     self.heroDamageNameLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.heroDamageNameLabel.textAlignment = NSTextAlignmentCenter;
+    self.heroDamageNameLabel.adjustsFontSizeToFitWidth = YES;
     [self.contentView addSubview:self.heroDamageNameLabel];
     [self.heroDamageNameLabel.topAnchor constraintEqualToAnchor:self.durationLabel.bottomAnchor constant:15].active = YES;
     [self.heroDamageNameLabel.leftAnchor constraintEqualToAnchor:self.durationLabel.leftAnchor].active = YES;
@@ -379,6 +394,7 @@
     self.heroDamageLabel.backgroundColor = [UIColor colorWithRed:42.0f/255.0f green:40.0f/255.0f blue:62.0f/255.0f alpha:1];
     self.heroDamageLabel.textColor = UIColor.whiteColor;
     self.heroDamageLabel.textAlignment = NSTextAlignmentCenter;
+    self.heroDamageLabel.adjustsFontSizeToFitWidth = YES;
     [self.contentView addSubview:self.heroDamageLabel];
     [self.heroDamageLabel.topAnchor constraintEqualToAnchor:self.heroDamageNameLabel.bottomAnchor].active = YES;
     [self.heroDamageLabel.leftAnchor constraintEqualToAnchor:self.heroDamageNameLabel.leftAnchor].active = YES;
@@ -391,6 +407,7 @@
     self.towerDamageNameLabel.adjustsFontSizeToFitWidth = YES;
     self.towerDamageNameLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.towerDamageNameLabel.textAlignment = NSTextAlignmentCenter;
+    self.towerDamageNameLabel.adjustsFontSizeToFitWidth = YES;
     [self.contentView addSubview:self.towerDamageNameLabel];
     [self.towerDamageNameLabel.topAnchor constraintEqualToAnchor:self.levelLabel.bottomAnchor constant:15].active = YES;
     [self.towerDamageNameLabel.leftAnchor constraintEqualToAnchor:self.levelLabel.leftAnchor].active = YES;
@@ -402,6 +419,7 @@
     self.towerDamageLabel.backgroundColor = [UIColor colorWithRed:42.0f/255.0f green:40.0f/255.0f blue:62.0f/255.0f alpha:1];
     self.towerDamageLabel.textColor = UIColor.whiteColor;
     self.towerDamageLabel.textAlignment = NSTextAlignmentCenter;
+    self.towerDamageLabel.adjustsFontSizeToFitWidth = YES;
     [self.contentView addSubview:self.towerDamageLabel];
     [self.towerDamageLabel.topAnchor constraintEqualToAnchor:self.towerDamageNameLabel.bottomAnchor].active = YES;
     [self.towerDamageLabel.leftAnchor constraintEqualToAnchor:self.towerDamageNameLabel.leftAnchor].active = YES;
@@ -414,6 +432,7 @@
     self.heroHealingNameLabel.adjustsFontSizeToFitWidth = YES;
     self.heroHealingNameLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.heroHealingNameLabel.textAlignment = NSTextAlignmentCenter;
+    self.heroHealingNameLabel.adjustsFontSizeToFitWidth = YES;
     [self.contentView addSubview:self.heroHealingNameLabel];
     [self.heroHealingNameLabel.topAnchor constraintEqualToAnchor:self.heroDamageLabel.bottomAnchor constant:15].active = YES;
     [self.heroHealingNameLabel.leftAnchor constraintEqualToAnchor:self.heroDamageLabel.leftAnchor].active = YES;
@@ -425,6 +444,7 @@
     self.heroHealingLabel.backgroundColor = [UIColor colorWithRed:42.0f/255.0f green:40.0f/255.0f blue:62.0f/255.0f alpha:1];
     self.heroHealingLabel.textColor = UIColor.whiteColor;
     self.heroHealingLabel.textAlignment = NSTextAlignmentCenter;
+    self.heroHealingLabel.adjustsFontSizeToFitWidth = YES;
     [self.contentView addSubview:self.heroHealingLabel];
     [self.heroHealingLabel.topAnchor constraintEqualToAnchor:self.heroHealingNameLabel.bottomAnchor].active = YES;
     [self.heroHealingLabel.leftAnchor constraintEqualToAnchor:self.heroHealingNameLabel.leftAnchor].active = YES;
