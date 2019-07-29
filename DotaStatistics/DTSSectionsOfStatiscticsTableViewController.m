@@ -16,7 +16,7 @@
 
 @interface DTSSectionsOfStatiscticsTableViewController ()
 
-@property (nonatomic, strong) NSArray<DTSSectionModel *> *sections;
+@property (nonatomic, copy) NSArray<DTSSectionModel *> *sections;
 @property (nonatomic, strong) DTSSectionFabric *fabric;
 
 @end

@@ -24,7 +24,7 @@
     self = [super init];
     if (self)
     {
-        _name = name;
+        _name = [name copy];
         _image = image;
     }
     return self;

@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)updateInformationWillBe;
 
 /**
- Событие того, что получение информации закончено
+ Событие того, что получение информации о героях закончено
  */
 - (void)getInformationDidEnd;
 
