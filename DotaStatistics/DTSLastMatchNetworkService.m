@@ -112,11 +112,11 @@
             playerMatchStats.towerDamage = [element valueForKey:@"tower_damage"];
             playerMatchStats.level = [element valueForKey:@"level"];
             
-            NSNumber *damageTaken;
-            for (NSNumber *damage in [[element valueForKey:@"damage_taken"] allValues])
-            {
-                damageTaken = [[NSNumber alloc] initWithLong:(long)damageTaken.integerValue + damage.integerValue];
-            }
+            NSNumber *damageTaken = 0;
+//            for (NSNumber *damage in [[element valueForKey:@"damage_taken"] allValues])
+//            {
+//                damageTaken = [[NSNumber alloc] initWithLong:(long)damageTaken.integerValue + damage.integerValue];
+//            }
             playerMatchStats.damageTaken = damageTaken;
                 
             NSNumber *heroId = [element valueForKey:@"hero_id"];
